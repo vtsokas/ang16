@@ -303,7 +303,7 @@
 </style>
 
 <!-- Toolbar -->
-<div class="toolbar" role="banner">
+<div *ngIf="false" class="toolbar" role="banner">
   <img
     width="40"
     alt="Angular Logo"
@@ -325,7 +325,7 @@
     </a>
 </div>
 
-<div class="content" role="main">
+<div *ngIf="false" class="content" role="main">
 
   <!-- Highlight Card -->
   <div class="card highlight-card card-small">
@@ -473,6 +473,31 @@
 
 </div>
 
+<div>
+<mat-toolbar color="primary" [style.width]="toolbarWidth">
+  <mat-toolbar-row [style.position]="'fixed'">
+    <span [style.position]="'fixed'">My project - {{dashboardWidth}}</span>
+    <button (click)="addCard()" [style.position]="'fixed'" [style.right]="'16px'" mat-raised-button color="accent">Add</button>
+
+  </mat-toolbar-row>
+
+  <!-- <mat-toolbar-row>
+    <span>Second Line</span>
+    <span class="example-spacer"></span>
+    <mat-icon class="example-icon">verified_user</mat-icon>
+  </mat-toolbar-row>
+
+  <mat-toolbar-row>
+    <span>Third Line</span>
+    <span class="example-spacer"></span>
+    <mat-icon class="example-icon">favorite</mat-icon>
+    <mat-icon class="example-icon">delete</mat-icon>
+  </mat-toolbar-row> -->
+</mat-toolbar>
+
+<!-- <app-my-navigation></app-my-navigation> -->
+<app-my-dashboard #dash  [style.width]="dashboardWidth" [gridWidth]="dashboardWidth" (cardsChanged)="dashboardCardsChanged($event)"></app-my-dashboard>
+</div>
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * The content above * * * * * * * * * * * -->
 <!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
