@@ -16,6 +16,9 @@ import { NgIf } from '@angular/common';
 })
 export class AppComponent implements OnInit {
 
+  data:any[]=[];
+
+ 
   _dash?: MyDashboardComponent;
   @ViewChild(MyDashboardComponent) set dash(d: MyDashboardComponent) {
     this._dash = d;
@@ -29,6 +32,7 @@ export class AppComponent implements OnInit {
     this.http.get<any>('/v4/teams',{headers: {
       'X-Auth-Token': '244170dde2ec47d49a2d7b8c283ab081'
     }}).subscribe(data => {
+        this.data=data.teams;
         //this.postId = data.id;
         console.log(data);
     })

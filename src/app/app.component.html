@@ -11,6 +11,6 @@
 
   </mat-toolbar>
 
-  <app-my-dashboard #dash [style.width]="dashboardWidth" [gridWidth]="dashboardWidth"
+  <app-my-dashboard #dash [style.width]="dashboardWidth" [gridWidth]="dashboardWidth" [teamData]="data"
     (cardsChanged)="dashboardCardsChanged($event)"></app-my-dashboard>
 </div>

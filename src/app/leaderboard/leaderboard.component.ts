@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-leaderboard',
@@ -7,13 +7,11 @@ import { Component } from '@angular/core';
 })
 export class LeaderboardComponent {
   displayedColumns: string[] = Object.keys(new LeaderboardItem());
-  dataSource: LeaderboardItem[] = [{
-    position: 1, name: 'Liverpool', points: 12, won: 4, lost: 0, draw: 0, goalDifference: 0
-  }];
+  @Input() dataSource: any[] = [];
 }
 
 export class LeaderboardItem {
-  position: number = 0;
+  crest: string = '';
   name: string = '';
   points: number = 0;
   won: number = 0;

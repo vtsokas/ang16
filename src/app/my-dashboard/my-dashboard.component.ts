@@ -21,6 +21,8 @@ export class MyDashboardComponent implements OnInit {
 
   @Input() gridWidth: string = "";
   @Output() cardsChanged = new EventEmitter<any[]>();
+  @Input() teamData: any[]=[];
+
 
   /** Based on the screen size, switch from standard to one column per row */
   cards = [
