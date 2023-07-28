@@ -1,0 +1,6 @@
+{
+  "/v4": {
+    "target": "http://api.football-data.org",
+    "secure": false     
+  }
+}

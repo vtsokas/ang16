@@ -24,13 +24,13 @@ export class MyDashboardComponent implements OnInit {
 
   /** Based on the screen size, switch from standard to one column per row */
   cards = [
-    { title: 'Card 1', cols: 1, rows: 3 },
-    { title: 'Card 2', cols: 1, rows: 3 },
-    { title: 'Card 3', cols: 1, rows: 3 },
-    { title: 'Card 4', cols: 1, rows: 3 },
-    { title: 'Card 3', cols: 1, rows: 3 },
-    { title: 'Card 4', cols: 1, rows: 3 },
-    { title: 'Card 3', cols: 1, rows: 3 },
+    { type: CARD_TYPE.LEADERBOARD, title: 'Card 1', cols: 1, rows: 3 },
+    // { title: 'Card 2', cols: 1, rows: 3 },
+    // { title: 'Card 3', cols: 1, rows: 3 },
+    // { title: 'Card 4', cols: 1, rows: 3 },
+    // { title: 'Card 3', cols: 1, rows: 3 },
+    // { title: 'Card 4', cols: 1, rows: 3 },
+    // { title: 'Card 3', cols: 1, rows: 3 },
     // { title: 'Card 4', cols: 1, rows: 3 },
     // { title: 'Card 4', cols: 1, rows: 1 }
   ];
@@ -48,4 +48,11 @@ export class MyDashboardComponent implements OnInit {
     this.cards.splice(this.cards.indexOf(card), 1);
     this.cardsChanged.emit(this.cards);
   }
+}
+
+enum CARD_TYPE
+{
+  LEADERBOARD,
+  RESULTS,
+  ANALYSIS
 }
