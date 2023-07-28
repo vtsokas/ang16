@@ -27,6 +27,11 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { LeaderboardComponent } from './leaderboard/leaderboard.component';
+import { FormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import {NgIf} from '@angular/common';
+import {MatDialog, MAT_DIALOG_DATA, MatDialogRef, MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -36,7 +41,8 @@ import { HttpClientModule } from '@angular/common/http';
     MyTreeComponent,
     MyDragDropComponent,
     MyNavigationComponent,
-    MyAddressFormComponent
+    MyAddressFormComponent,
+    LeaderboardComponent
   ],
   imports: [
     BrowserModule,
@@ -58,7 +64,11 @@ import { HttpClientModule } from '@angular/common/http';
     MatSelectModule,
     MatRadioModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatFormFieldModule,
+    FormsModule,
+    NgIf,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -20,10 +20,11 @@
           </mat-card-title>
         </mat-card-header>
         <mat-card-content class="dashboard-card-content">
-          <div *ngIf="card.title == 'Card 1'"><app-my-drag-drop></app-my-drag-drop></div>
+          <!-- <div *ngIf="card.title == 'Card 1'"><app-my-drag-drop></app-my-drag-drop></div>
           <div *ngIf="card.title == 'Card 2'"><app-my-table></app-my-table></div>
           <div *ngIf="card.title == 'Card 3'"><app-my-tree></app-my-tree></div>
-          <div *ngIf="card.title == 'Card 4'"><app-my-address-form></app-my-address-form></div>
+          <div *ngIf="card.title == 'Card 4'"><app-my-address-form></app-my-address-form></div> -->
+          <div *ngIf="card.type == 0"><app-leaderboard></app-leaderboard></div>
         </mat-card-content>
       </mat-card>
     </mat-grid-tile>
