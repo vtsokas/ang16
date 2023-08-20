@@ -1,6 +1,11 @@
 {
-  "/v4": {
-    "target": "http://api.football-data.org",
-    "secure": false     
+  "/v2": {
+    "target": {
+        "host" : "localhost",
+        "protocol": "http",
+        "port": "1027"
+      },
+    "secure": false,
+    "changeOrigin": true
   }
 }

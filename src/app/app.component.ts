@@ -26,8 +26,8 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     // let h = new HttpHeaders();
     // h.set('X-Auth-Token', '244170dde2ec47d49a2d7b8c283ab081');
-    this.http.get<any>('/v4/teams',{headers: {
-      'X-Auth-Token': '244170dde2ec47d49a2d7b8c283ab081'
+    this.http.get<any>('/v2/entities',{headers: {
+      'X-Auth-Token': '11ec2bd333e9a1a8ac2e1938e881c88559f8b962'
     }}).subscribe(data => {
         //this.postId = data.id;
         console.log(data);
