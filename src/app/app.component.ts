@@ -16,6 +16,11 @@ import { NgIf } from '@angular/common';
 })
 export class AppComponent implements OnInit {
 
+  loggedin = false;
+  hide = true;
+  username: string = '';
+  password: string= '';
+
   _dash?: MyDashboardComponent;
   @ViewChild(MyDashboardComponent) set dash(d: MyDashboardComponent) {
     this._dash = d;
@@ -26,14 +31,19 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     // let h = new HttpHeaders();
     // h.set('X-Auth-Token', '244170dde2ec47d49a2d7b8c283ab081');
-    this.http.get<any>('/v4/teams',{headers: {
-      'X-Auth-Token': '244170dde2ec47d49a2d7b8c283ab081'
+  
+  }
+
+  login(){
+    this.http.post<any>('/oauth2/token',{grant_type:"password",username:this.username,password:this.password},{headers: {
+      'authorization': 'Basic MDkzOTU5NjYtM2ZhNi00NjdjLWI1ODUtN2E0ZTllY2IyNzRhOjBiNTM4ZTM2LTA0MjEtNGE3ZC05MGYzLTZmZjkxMTQ4Njg3NQ=='
     }}).subscribe(data => {
         //this.postId = data.id;
         console.log(data);
     })
+    this.loggedin=true;
+    console.log(this.username,this.password)
   }
-
   title = 'my-project';
 
   dashboardWidth: string = '';
