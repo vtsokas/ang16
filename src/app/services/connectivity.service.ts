@@ -29,4 +29,18 @@ export class ConnectivityService {
         callback(r);
       })
   }
+
+  serviceStoreLogin() {
+    this.http.post<any>('/servicestore/login', '{"email":"set@hpc.bg","password":"asdfiuY12#"}',{headers: {
+      'Content-Type': 'application/json'
+    }}).subscribe(r => {
+      this.serviceStoreListServices();
+    });
+  }
+
+  serviceStoreListServices() {
+    this.http.get<any>('servicestore/service-list').subscribe(r => {
+      console.log(r);
+    });
+  }
 }

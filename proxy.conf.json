@@ -8,5 +8,10 @@
     "target": "http://localhost:1027",
     "secure": false,
     "changeOrigin": true
+  },
+  "/servicestore/*": {
+    "target": "http://localhost:9090",
+    "secure": false,
+    "changeOrigin": true
   }
 }
