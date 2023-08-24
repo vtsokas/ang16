@@ -1,12 +1,13 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit, ViewChild, Inject } from '@angular/core';
-import { MyDashboardComponent } from './my-dashboard/my-dashboard.component';
+import { MyDashboardComponent } from './components/my-dashboard/my-dashboard.component';
 import { MatDialog, MAT_DIALOG_DATA, MatDialogRef, MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { NgIf } from '@angular/common';
+import { ConnectivityService } from './services/connectivity.service';
 
 
 @Component({
@@ -26,7 +27,7 @@ export class AppComponent implements OnInit {
     this._dash = d;
   }
 
-  constructor(private http: HttpClient, private dialog: MatDialog) { }
+  constructor(private connectivityService: ConnectivityService, private dialog: MatDialog) { }
 
   ngOnInit(): void {
     // let h = new HttpHeaders();
@@ -35,20 +36,8 @@ export class AppComponent implements OnInit {
   }
 
   login(){
-    this.http.post<any>('/oauth2/token',`grant_type=password&username=${encodeURIComponent(this.username)}&password=${this.password}`,{headers: {
-      'Content-Type': 'application/x-www-form-urlencoded',
-      'Authorization': 'Basic MDkzOTU5NjYtM2ZhNi00NjdjLWI1ODUtN2E0ZTllY2IyNzRhOjBiNTM4ZTM2LTA0MjEtNGE3ZC05MGYzLTZmZjkxMTQ4Njg3NQ=='
-    }}).subscribe(data => {
-        //this.postId = data.id;
-        if (!!data.access_token) {          
-          console.log(data.access_token);
-          this.loggedin=true;
-
-          this.http.get<any>('/v2/entities',{headers: {
-            'X-Auth-Token': data.access_token}}).subscribe(r => {
-              console.log(r);
-            })
-        }
+    this.connectivityService.keyrockLogin(this.username, this.password, (success: boolean) => {
+      if (success) this.loggedin = true;
     });
   }
   title = 'my-project';

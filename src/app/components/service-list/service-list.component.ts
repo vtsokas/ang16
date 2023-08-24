@@ -2,17 +2,17 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-leaderboard',
-  templateUrl: './leaderboard.component.html',
-  styleUrls: ['./leaderboard.component.scss']
+  templateUrl: './service-list.component.html',
+  styleUrls: ['./service-list.component.scss']
 })
-export class LeaderboardComponent {
-  displayedColumns: string[] = Object.keys(new LeaderboardItem());
-  dataSource: LeaderboardItem[] = [{
+export class ServiceListComponent {
+  displayedColumns: string[] = Object.keys(new ServiceListItem());
+  dataSource: ServiceListItem[] = [{
     position: 1, name: 'Liverpool', points: 12, won: 4, lost: 0, draw: 0, goalDifference: 0
   }];
 }
 
-export class LeaderboardItem {
+export class ServiceListItem {
   position: number = 0;
   name: string = '';
   points: number = 0;
