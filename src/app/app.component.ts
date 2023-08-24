@@ -31,18 +31,25 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     // let h = new HttpHeaders();
     // h.set('X-Auth-Token', '244170dde2ec47d49a2d7b8c283ab081');
-  
+    
   }
 
   login(){
-    this.http.post<any>('/oauth2/token',{grant_type:"password",username:this.username,password:this.password},{headers: {
-      'authorization': 'Basic MDkzOTU5NjYtM2ZhNi00NjdjLWI1ODUtN2E0ZTllY2IyNzRhOjBiNTM4ZTM2LTA0MjEtNGE3ZC05MGYzLTZmZjkxMTQ4Njg3NQ=='
+    this.http.post<any>('/oauth2/token',`grant_type=password&username=${encodeURIComponent(this.username)}&password=${this.password}`,{headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'Authorization': 'Basic MDkzOTU5NjYtM2ZhNi00NjdjLWI1ODUtN2E0ZTllY2IyNzRhOjBiNTM4ZTM2LTA0MjEtNGE3ZC05MGYzLTZmZjkxMTQ4Njg3NQ=='
     }}).subscribe(data => {
         //this.postId = data.id;
-        console.log(data);
-    })
-    this.loggedin=true;
-    console.log(this.username,this.password)
+        if (!!data.access_token) {          
+          console.log(data.access_token);
+          this.loggedin=true;
+
+          this.http.get<any>('/v2/entities',{headers: {
+            'X-Auth-Token': data.access_token}}).subscribe(r => {
+              console.log(r);
+            })
+        }
+    });
   }
   title = 'my-project';
 
