@@ -32,7 +32,6 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     // let h = new HttpHeaders();
     // h.set('X-Auth-Token', '244170dde2ec47d49a2d7b8c283ab081');
-    this.connectivityService.serviceStoreLogin();
   }
 
   login(){
