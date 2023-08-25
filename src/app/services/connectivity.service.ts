@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import config from './connectivity.config.json';
 
 @Injectable({
   providedIn: 'root'
@@ -7,7 +8,7 @@ import { Injectable } from '@angular/core';
 export class ConnectivityService {
 
   keyrockAccessToken: any;
-  keyrockBaseAuthentication = 'NTY4OGQ1OTYtOTE3MS00NTZlLWJmNTgtYzhlNzM5YTA3MDY2OjM2MWMzMmNlLTVjZWUtNDE0Yi04NDllLWRkYjMyY2VhMzE1MQ==';
+  keyrockBaseAuthentication = config.keyrockBaseAuth;//'';
   serviceStoreAccessToken: any;
 
   constructor(private http: HttpClient) { }
@@ -50,7 +51,7 @@ export class ConnectivityService {
   }
 
   serviceStoreLogin(callback: Function) {
-    this.http.post<any>('/servicestore/login', '{"email":"set@hpc.bg","password":"asdfiuY12#"}', {
+    this.http.post<any>('/servicestore/login', `{"email":"${config.serviceStoreUser}","password":"${config.serviceStorePass}"}`, {
       headers: {
         'Content-Type': 'application/json'
       }
@@ -60,9 +61,16 @@ export class ConnectivityService {
   }
 
   serviceStoreListServices(callback: Function) {
-
-    this.http.get<any>('servicestore/service-list').subscribe(r => {
-      callback(r);
-    });
+    if (!this.serviceStoreAccessToken) {
+      this.serviceStoreLogin(() => {
+        this.http.get<any>('servicestore/service-list').subscribe(r => {
+          callback(r);
+        });
+      });
+    } else {
+      this.http.get<any>('servicestore/service-list').subscribe(r => {
+        callback(r);
+      });
+    }
   }
 }

@@ -40,3 +40,6 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+# Connectivity
+/src/app/components/services/connectivity.config.json
