@@ -2,10 +2,12 @@
   <mat-toolbar color="primary" [style.width]="toolbarWidth" style="min-width: 100%">
     <mat-toolbar-row [style.position]="'fixed'">
       <span [style.position]="'fixed'">Our project - {{dashboardWidth}}</span>
-      <button (click)="addCard()" [style.position]="'fixed'" [style.right]="'16px'" mat-raised-button
-        color="accent">Add</button>
-      <button mat-raised-button [style.position]="'fixed'" [style.right]="'96px'" (click)="openDialog()">Pick
-        one</button>
+      <button (click)="addCard()" mat-raised-button [style.position]="'fixed'" 
+        [style.right]="'104px'" color="">Add</button>
+      <!-- <button mat-raised-button [style.position]="'fixed'" [style.right]="'96px'" (click)="openDialog()">Pick
+        one</button> -->
+        <button (click)="logout()" mat-raised-button [style.position]="'fixed'" 
+        [style.right]="'16px'" color="warn">Logout</button>
     </mat-toolbar-row>
 
   </mat-toolbar>

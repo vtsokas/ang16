@@ -30,8 +30,7 @@ export class AppComponent implements OnInit {
   constructor(private connectivityService: ConnectivityService, private dialog: MatDialog) { }
 
   ngOnInit(): void {
-    // let h = new HttpHeaders();
-    // h.set('X-Auth-Token', '244170dde2ec47d49a2d7b8c283ab081');
+    this.loggedin = this.connectivityService.isLoggedIn();
   }
 
   login(){
@@ -61,13 +60,16 @@ export class AppComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
-      // this.animal = result;
     });
   }
 
   addCard() {
     this._dash?.cards.push(this._dash?.cards[0]);
     this.dashboardCardsChanged(this._dash?.cards || this.dashboardCards);
+  }
+
+  logout() {
+    this.connectivityService.logout();
   }
 }
 

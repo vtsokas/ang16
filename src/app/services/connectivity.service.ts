@@ -13,6 +13,15 @@ export class ConnectivityService {
 
   constructor(private http: HttpClient) { }
 
+  isLoggedIn() {
+    return !!localStorage.getItem('keyrock_access_token');
+  }
+
+  logout() {
+    localStorage.removeItem('keyrock_access_token');
+    window.location.reload();
+  }
+
   keyrockLogin(username: string, password: string, callback: Function) {
     this.http.post<any>('/oauth2/token', `grant_type=password&username=${encodeURIComponent(username)}&password=${password}`, {
       headers: {
@@ -22,6 +31,7 @@ export class ConnectivityService {
     }).subscribe(data => {
       if (!!data.access_token) {
         this.keyrockAccessToken = data.access_token;
+        localStorage.setItem('keyrock_access_token', this.keyrockAccessToken);
       }
       callback(this.keyrockAccessToken != null);
     });
