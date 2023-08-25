@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { NgIf } from '@angular/common';
 import { ConnectivityService } from './services/connectivity.service';
+import { CARD_TYPE, LayoutService } from './services/layout.service';
 
 
 @Component({
@@ -27,7 +28,7 @@ export class AppComponent implements OnInit {
     this._dash = d;
   }
 
-  constructor(private connectivityService: ConnectivityService, private dialog: MatDialog) { }
+  constructor(private connectivityService: ConnectivityService, private layoutService: LayoutService, private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.loggedin = this.connectivityService.isLoggedIn();
@@ -63,9 +64,10 @@ export class AppComponent implements OnInit {
     });
   }
 
-  addCard() {
-    this._dash?.cards.push(this._dash?.cards[0]);
-    this.dashboardCardsChanged(this._dash?.cards || this.dashboardCards);
+  addServiceList() {
+    this.layoutService.addCard(CARD_TYPE.SERVICE_LIST, 'Interconnect services');
+    // this._dash?.cards.push(this._dash?.cards[0]);
+    // this.dashboardCardsChanged(this._dash?.cards || this.dashboardCards);
   }
 
   logout() {
