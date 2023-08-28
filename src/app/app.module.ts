@@ -28,13 +28,15 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import {NgIf} from '@angular/common';
 import {MatDialog, MAT_DIALOG_DATA, MatDialogRef, MatDialogModule} from '@angular/material/dialog';
 import { ServiceDetailsComponent } from './components/service-details/service-details.component';
+import { MeasurementListComponent } from './components/measurement-list/measurement-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MyDashboardComponent,
     ServiceListComponent,
-    ServiceDetailsComponent
+    ServiceDetailsComponent,
+    MeasurementListComponent
   ],
   imports: [
     BrowserModule,

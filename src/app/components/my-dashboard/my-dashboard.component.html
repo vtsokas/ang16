@@ -24,8 +24,9 @@
           <div *ngIf="card.title == 'Card 2'"><app-my-table></app-my-table></div>
           <div *ngIf="card.title == 'Card 3'"><app-my-tree></app-my-tree></div>
           <div *ngIf="card.title == 'Card 4'"><app-my-address-form></app-my-address-form></div> -->
-          <div *ngIf="card.type == 0"><app-service-list></app-service-list></div>
-          <div *ngIf="card.type == 1"><app-service-details [data]="card.value"></app-service-details></div>
+          <div *ngIf="card.type == 0" class="content-holder"><app-service-list></app-service-list></div>
+          <div *ngIf="card.type == 1" class="content-holder"><app-service-details [data]="card.value"></app-service-details></div>
+          <div *ngIf="card.type == 2" class="content-holder"><app-measurement-list [type]="card.value"></app-measurement-list></div>
         </mat-card-content>
       </mat-card>
     </mat-grid-tile>

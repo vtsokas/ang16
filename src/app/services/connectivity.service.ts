@@ -14,7 +14,11 @@ export class ConnectivityService {
   constructor(private http: HttpClient) { }
 
   isLoggedIn() {
-    return !!localStorage.getItem('keyrock_access_token');
+    if (!!localStorage.getItem('keyrock_access_token')) {
+      this.keyrockAccessToken = localStorage.getItem('keyrock_access_token');
+      return true;
+    }
+    return false;
   }
 
   logout() {
@@ -37,27 +41,35 @@ export class ConnectivityService {
     });
   }
 
-  orionGetAll(callback: Function) {
-    if (!this.serviceStoreAccessToken) {
-      this.serviceStoreLogin(() => {
-        this.http.get<any>('/v2/entities', {
-          headers: {
-            'X-Auth-Token': this.keyrockAccessToken
-          }
-        }).subscribe(r => {
-          callback(r);
-        })
-      });
-    } else {
-      this.http.get<any>('/v2/entities', {
-        headers: {
-          'X-Auth-Token': this.keyrockAccessToken
-        }
-      }).subscribe(r => {
-        callback(r);
-      })
-    }
+  orionCreate(data: any, callback: Function) {
+    this.http.post<any>('/v2/entities?options=keyValues', data, {
+      headers: {
+        'X-Auth-Token': this.keyrockAccessToken
+      }
+    }).subscribe(r => {
+      callback(r);
+    });
+  }
 
+  orionGetAll(callback: Function) {
+    this.http.get<any>('/v2/entities', {
+      headers: {
+        'X-Auth-Token': this.keyrockAccessToken
+      }
+    }).subscribe(r => {
+      callback(r);
+    });
+  }
+
+  orionGetByType(type: string, callback: Function) {
+    let url = `/v2/entities?type=${type}&options=keyValues`;
+    this.http.get<any>(url, {
+      headers: {
+        'X-Auth-Token': this.keyrockAccessToken
+      }
+    }).subscribe(r => {
+      callback(r);
+    });
   }
 
   serviceStoreLogin(callback: Function) {

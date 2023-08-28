@@ -76,6 +76,10 @@ export class AppComponent implements OnInit {
     // this.dashboardCardsChanged(this._dash?.cards || this.dashboardCards);
   }
 
+  addMeasurements(type: string) {
+    this.layoutService.addCard(CARD_TYPE.MEASUREMENTS, `Measurements (${type})`, type);
+  }
+
   logout() {
     this.connectivityService.logout();
   }
