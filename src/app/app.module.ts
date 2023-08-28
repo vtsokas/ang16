@@ -27,12 +27,14 @@ import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {NgIf} from '@angular/common';
 import {MatDialog, MAT_DIALOG_DATA, MatDialogRef, MatDialogModule} from '@angular/material/dialog';
+import { ServiceDetailsComponent } from './components/service-details/service-details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MyDashboardComponent,
-    ServiceListComponent
+    ServiceListComponent,
+    ServiceDetailsComponent
   ],
   imports: [
     BrowserModule,

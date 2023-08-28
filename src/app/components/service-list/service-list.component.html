@@ -2,7 +2,13 @@
 
   <ng-container *ngFor="let col of displayedColumns" matColumnDef="{{col}}">
     <th mat-header-cell *matHeaderCellDef> {{getColumnHeader(col)}} </th>
-    <td mat-cell *matCellDef="let element"> {{element[col]}} </td>
+    <td mat-cell *matCellDef="let element">
+      <div *ngIf="col=='serviceID'"> <button  (click)="showDetails(element)" mat-icon-button color="accent"
+          aria-label="Example icon button with a menu icon">
+          <mat-icon>build</mat-icon>
+        </button> </div>
+      <div *ngIf="col!='serviceID'">{{element[col]}} </div>
+    </td>
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

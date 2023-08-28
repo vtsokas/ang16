@@ -70,6 +70,12 @@ export class AppComponent implements OnInit {
     // this.dashboardCardsChanged(this._dash?.cards || this.dashboardCards);
   }
 
+  addServiceDetails() {
+    this.layoutService.addCard(CARD_TYPE.SERVICE_DETAILS, 'Statistics');
+    // this._dash?.cards.push(this._dash?.cards[0]);
+    // this.dashboardCardsChanged(this._dash?.cards || this.dashboardCards);
+  }
+
   logout() {
     this.connectivityService.logout();
   }

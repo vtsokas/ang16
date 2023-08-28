@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ConnectivityService } from 'src/app/services/connectivity.service';
+import { CARD_TYPE, LayoutService } from 'src/app/services/layout.service';
 
 @Component({
   selector: 'app-service-list',
@@ -8,7 +9,7 @@ import { ConnectivityService } from 'src/app/services/connectivity.service';
 })
 export class ServiceListComponent implements OnInit {
   
-constructor(private cService: ConnectivityService){}
+constructor(private cService: ConnectivityService,private layoutService: LayoutService){}
 
   displayedColumns: string[] = [];
   dataSource: any[] = [];
@@ -35,5 +36,10 @@ constructor(private cService: ConnectivityService){}
       });
       return r;
     });
+  }
+
+  showDetails(data:any){
+    console.log(data)
+    this.layoutService.addCard(CARD_TYPE.SERVICE_DETAILS,data.name,data);
   }
 }

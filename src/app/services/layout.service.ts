@@ -14,11 +14,11 @@ export class LayoutService {
     this.dashboardComponent = c;
   }
 
-  addCard(type: CARD_TYPE, title:string, id?:number) {
+  addCard(type: CARD_TYPE, title:string, value?:any) {
     this.dashboardComponent?.addCard({
       type:type,
       title: title,
-      id: id,
+      value:value,
       rows: 3,
       cols: 1
     });

@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output, inject } from '@angular/core';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { map } from 'rxjs/operators';
-import { LayoutService } from 'src/app/services/layout.service';
+import { CARD_TYPE, LayoutService } from 'src/app/services/layout.service';
 
 @Component({
   selector: 'app-my-dashboard',
@@ -29,7 +29,7 @@ export class MyDashboardComponent implements OnInit {
 
   /** Based on the screen size, switch from standard to one column per row */
   cards: any[] = [
-    //{ type: CARD_TYPE.SERVICE_LIST, title: 'Card 1', cols: 1, rows: 3 },
+    { type: CARD_TYPE.SERVICE_LIST, title: 'Card 1', cols: 1, rows: 3 },
     // { title: 'Card 2', cols: 1, rows: 3 },
     // { title: 'Card 3', cols: 1, rows: 3 },
     // { title: 'Card 4', cols: 1, rows: 3 },
