@@ -58,8 +58,9 @@ export class MeasurementListComponent implements OnInit {
       r['type'] = r.type.split("_")[1];
       r['value'] = +r['value'].toFixed(2).toString();// + suffix;
       r['unit'] = suffix;
-      r['date'] = d.toLocaleDateString() + " " + d.getHours() + ":" + d.getMinutes();
-      r['sensorId'] = k[0];
+      r['date'] = d.toLocaleDateString();
+      r['time'] = d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
+      // r['sensorId'] = k[0];
       this.displayedColumns.forEach(p => {
 
       });
@@ -92,9 +93,10 @@ export class MeasurementListComponent implements OnInit {
         v = v * 100;
       }
     }
-    
+
+    let baseTime = Math.round(new Date().getTime() / 1000);    
     this.cService.orionCreate({
-      "id": `iot_sensor_eadbed22-a59b-4728-ad8f-193fc45031e2|msr_${this.type}|${(1693226728 + 6000 + this.mockCounter).toString()}`,
+      "id": `iot_sensor_eadbed22-a59b-4728-ad8f-193fc45031e2|msr_${this.type}|${(baseTime + 600 + this.mockCounter).toString()}`,
       "type": "measurement_" + this.type,
       "value": v   
     }, () => {
