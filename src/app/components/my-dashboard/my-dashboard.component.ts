@@ -29,20 +29,15 @@ export class MyDashboardComponent implements OnInit {
 
   /** Based on the screen size, switch from standard to one column per row */
   cards: any[] = [
-    { type: CARD_TYPE.SERVICE_LIST, title: 'Card 1', cols: 1, rows: 3 },
-    // { title: 'Card 2', cols: 1, rows: 3 },
-    // { title: 'Card 3', cols: 1, rows: 3 },
-    // { title: 'Card 4', cols: 1, rows: 3 },
-    // { title: 'Card 3', cols: 1, rows: 3 },
-    // { title: 'Card 4', cols: 1, rows: 3 },
-    // { title: 'Card 3', cols: 1, rows: 3 },
-    // { title: 'Card 4', cols: 1, rows: 3 },
-    // { title: 'Card 4', cols: 1, rows: 1 }
+    // { type: CARD_TYPE.SERVICE_LIST, title: 'Card 1', cols: 1, rows: 3 }
   ];
 
   addCard(card: any) {
     this.cards.push(card);
     this.cardsChanged.emit(this.cards);
+    setTimeout( () => { 
+      window.scrollTo(+this.gridWidth.replace('px', ''), 0); 
+    });
   }
 
   expandCard(card: any) {
