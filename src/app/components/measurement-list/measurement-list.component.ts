@@ -35,12 +35,30 @@ export class MeasurementListComponent implements OnInit {
   }
 
   formatData(data: any[]) {
+    let suffix = "";
+    switch (this.type) {
+      case 'temperature': {
+        suffix = "°C";
+        break;
+      }
+      case 'content': {
+        suffix = 'L';
+        break;
+      }
+      case 'consumption': {
+        suffix = 'kcal/day';
+        break;
+      }
+    }
     return data.map(r => {
       let k = r.id.split("|");
       delete r['id'];
-      r['date'] = new Date(+k[2] * 1000).toLocaleDateString();
+      delete r['timestamp'];
+      let d = new Date(+k[2] * 1000);
       r['type'] = r.type.split("_")[1];
-      r['timestamp'] = k[2];
+      r['value'] = +r['value'].toFixed(2).toString();// + suffix;
+      r['unit'] = suffix;
+      r['date'] = d.toLocaleDateString() + " " + d.getHours() + ":" + d.getMinutes();
       r['sensorId'] = k[0];
       this.displayedColumns.forEach(p => {
 
@@ -52,11 +70,33 @@ export class MeasurementListComponent implements OnInit {
   mockCounter = 10;
   mockData() {
     if (this.mockCounter == 0) return;
+
+    var v = Math.random();
+    switch (this.type) {
+      //25 - 35
+      case 'temperature': {
+        v = 25 + v * 10;
+        break;
+      }
+      //0 - 20
+      case 'content': {
+        v = v * 20;
+        break;
+      }
+      //0 - 10
+      case 'consumption': {
+        v = v * 10;
+        break;
+      }
+      default: {
+        v = v * 100;
+      }
+    }
     
     this.cService.orionCreate({
       "id": `iot_sensor_eadbed22-a59b-4728-ad8f-193fc45031e2|msr_${this.type}|${(1693226728 + this.mockCounter).toString()}`,
       "type": "measurement_" + this.type,
-      "value": Math.random() * 100   
+      "value": v   
     }, () => {
       this.mockCounter--;
       this.mockData();
