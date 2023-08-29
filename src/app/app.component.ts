@@ -82,6 +82,11 @@ export class AppComponent implements OnInit {
     this.layoutService.addCard(CARD_TYPE.DEVICE_DETAILS, 'Device (Boiler)');
   }
 
+  addTestCommunication() {
+    this.layoutService.clearCards();
+    this.layoutService.addCard(CARD_TYPE.TEST_COMMUNICATION, 'Test Communication');
+  }
+
   logout() {
     this.connectivityService.logout();
   }

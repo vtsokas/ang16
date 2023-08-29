@@ -28,6 +28,7 @@
           <div *ngIf="card.type == 1" class="content-holder"><app-service-details [data]="card.value"></app-service-details></div>
           <div *ngIf="card.type == 2" class="content-holder"><app-measurement-list [type]="card.value"></app-measurement-list></div>
           <div *ngIf="card.type == 3" class="content-holder"><app-device-details></app-device-details></div>
+          <div *ngIf="card.type == 4" class="content-holder"><app-test-communication></app-test-communication></div>
         </mat-card-content>
       </mat-card>
     </mat-grid-tile>

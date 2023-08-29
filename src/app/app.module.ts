@@ -31,6 +31,7 @@ import { ServiceDetailsComponent } from './components/service-details/service-de
 import { MeasurementListComponent } from './components/measurement-list/measurement-list.component';
 import { DeviceDetailsComponent } from './components/device-details/device-details.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { TestCommunicationComponent } from './components/test-communication/test-communication.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     ServiceListComponent,
     ServiceDetailsComponent,
     MeasurementListComponent,
-    DeviceDetailsComponent
+    DeviceDetailsComponent,
+    TestCommunicationComponent
   ],
   imports: [
     BrowserModule,
