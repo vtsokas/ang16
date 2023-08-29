@@ -94,7 +94,7 @@ export class MeasurementListComponent implements OnInit {
     }
     
     this.cService.orionCreate({
-      "id": `iot_sensor_eadbed22-a59b-4728-ad8f-193fc45031e2|msr_${this.type}|${(1693226728 + this.mockCounter).toString()}`,
+      "id": `iot_sensor_eadbed22-a59b-4728-ad8f-193fc45031e2|msr_${this.type}|${(1693226728 + 6000 + this.mockCounter).toString()}`,
       "type": "measurement_" + this.type,
       "value": v   
     }, () => {

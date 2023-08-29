@@ -23,11 +23,16 @@ export class LayoutService {
       cols: 1
     });
   }
+
+  clearCards() {
+    this.dashboardComponent!.cards = [];
+  }
 }
 
 export enum CARD_TYPE
 {
   SERVICE_LIST,
   SERVICE_DETAILS,
-  MEASUREMENTS
+  MEASUREMENTS,
+  DEVICE_DETAILS
 }

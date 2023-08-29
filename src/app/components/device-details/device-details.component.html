@@ -1,0 +1,18 @@
+<mat-slide-toggle [(ngModel)]="isChecked">Is Active</mat-slide-toggle>
+<br>
+<div class="general-info">
+    <p><b>Device type: </b>Boiler</p>
+    <p><b>Location: </b>Sofia, Bulgaria</p>
+    <p><b>Max capacity: </b>20L</p>
+</div>
+<br>
+<p><b>Device ID: </b>iot_sensor_eadbed22-a59b-4728-ad8f-193fc45031e2</p>
+
+<div class="buttons">
+<button (click)="addMeasurements('temperature')" mat-raised-button style="margin-left:20px"
+    color="accent">Temperature</button>
+<button (click)="addMeasurements('consumption')" mat-raised-button style="margin-left:20px"
+    color="accent">Consumption</button>
+<button (click)="addMeasurements('content')" mat-raised-button style="margin-left:20px" 
+    color="accent">Content</button>
+</div>

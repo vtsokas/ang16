@@ -25,10 +25,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { ServiceListComponent } from './components/service-list/service-list.component';
 import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import {NgIf} from '@angular/common';
-import {MatDialog, MAT_DIALOG_DATA, MatDialogRef, MatDialogModule} from '@angular/material/dialog';
+import { NgIf } from '@angular/common';
+import { MatDialog, MAT_DIALOG_DATA, MatDialogRef, MatDialogModule } from '@angular/material/dialog';
 import { ServiceDetailsComponent } from './components/service-details/service-details.component';
 import { MeasurementListComponent } from './components/measurement-list/measurement-list.component';
+import { DeviceDetailsComponent } from './components/device-details/device-details.component';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,8 @@ import { MeasurementListComponent } from './components/measurement-list/measurem
     MyDashboardComponent,
     ServiceListComponent,
     ServiceDetailsComponent,
-    MeasurementListComponent
+    MeasurementListComponent,
+    DeviceDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -62,7 +65,8 @@ import { MeasurementListComponent } from './components/measurement-list/measurem
     MatFormFieldModule,
     FormsModule,
     NgIf,
-    MatDialogModule
+    MatDialogModule,
+    MatSlideToggleModule
   ],
   providers: [],
   bootstrap: [AppComponent]

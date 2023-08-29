@@ -65,19 +65,21 @@ export class AppComponent implements OnInit {
   }
 
   addServiceList() {
+    this.layoutService.clearCards();
     this.layoutService.addCard(CARD_TYPE.SERVICE_LIST, 'Interconnect services');
     // this._dash?.cards.push(this._dash?.cards[0]);
     // this.dashboardCardsChanged(this._dash?.cards || this.dashboardCards);
   }
 
-  addServiceDetails() {
-    this.layoutService.addCard(CARD_TYPE.SERVICE_DETAILS, 'Statistics');
-    // this._dash?.cards.push(this._dash?.cards[0]);
-    // this.dashboardCardsChanged(this._dash?.cards || this.dashboardCards);
-  }
+  // addServiceDetails() {
+  //   this.layoutService.addCard(CARD_TYPE.SERVICE_DETAILS, 'Statistics');
+  //   // this._dash?.cards.push(this._dash?.cards[0]);
+  //   // this.dashboardCardsChanged(this._dash?.cards || this.dashboardCards);
+  // }
 
-  addMeasurements(type: string) {
-    this.layoutService.addCard(CARD_TYPE.MEASUREMENTS, `Measurements (${type})`, type);
+  addDeviceDetails() {
+    this.layoutService.clearCards();
+    this.layoutService.addCard(CARD_TYPE.DEVICE_DETAILS, 'Device (Boiler)');
   }
 
   logout() {
