@@ -10,6 +10,7 @@ export class ConnectivityService {
   keyrockAccessToken: any;
   keyrockBaseAuthentication = config.keyrockBaseAuth;//'';
   serviceStoreAccessToken: any;
+  knowledgeInteractionId: any;
 
   constructor(private http: HttpClient) { }
 
@@ -79,6 +80,61 @@ export class ConnectivityService {
       }
     }).subscribe(r => {
       callback();
+    });
+  }
+
+  smartConnectorCreate(callback: Function) {
+    let data = {
+      "knowledgeBaseId": config.knowledgeBaseId,
+      "knowledgeBaseName": "Test KB Ask",
+      "knowledgeBaseDescription": "This is a detailed description",
+      "reasonerEnabled": true
+    }
+    this.http.post<any>('/smartconnector/create', data, {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }).subscribe(r => {
+      callback();
+    });
+  }
+
+  smartConnectorRegisterInteraction(graphPattern: string, callback: Function) {
+    let data = {
+      "knowledgeInteractionType": "AskKnowledgeInteraction",
+      "knowledgeInteractionName": "test-ask",
+      "graphPattern": graphPattern
+    };
+    this.http.post<any>('/smartconnector/ki/register-ask-answer', data, {
+      headers: {
+        'Content-Type': 'application/json',
+        'KnowledgeBaseId': config.knowledgeBaseId
+      }
+    }).subscribe(r => {
+      if (!!r.knowledgeInteractionId) {
+        this.knowledgeInteractionId = r.knowledgeInteractionId;
+        callback(true);
+      } else {
+        callback(false);
+      }
+    });
+  }
+
+  smartConnectorInteractionAsk(bindingSet: any[], callback: Function) {
+    let data = {
+      "recipientSelector": {
+        "singleKnowledgeBase": config.AnswerKnowledgeBaseId
+      },
+      "bindingSet": bindingSet
+    };
+    this.http.post<any>('/smartconnector/ask', JSON.stringify(data), {
+      headers: {
+        "KnowledgeBaseId": config.knowledgeBaseId,
+        "KnowledgeInteractionId": this.knowledgeInteractionId,
+        'Content-Type': 'application/json'
+      }
+    }).subscribe(r => {
+      callback(r);
     });
   }
 

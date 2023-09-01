@@ -1,16 +1,47 @@
 <div class="connect-button">
     <p>Connect to Test Service</p>
-    <button (click)="testConnect()" mat-raised-button style="margin-left:20px" color="accent">Register Ask</button>
+    <button (click)="testConnect()" mat-raised-button style="margin-left:20px" color="accent">Connect</button>
 </div>
 
 <div *ngIf="isConnected" class="connection-info">
-    <p><b>Knowledge Base ID:</b>http://example.org/a-knowledge-base-id</p>
+    <p>You have successfully connected to the Service Store. You can now use this Service to perform ASK Knowledge
+        Interactions</p>
+    <!-- <p><b>Knowledge Base ID:</b>http://example.org/a-knowledge-base-id</p>
     <p><b>Knowledge Interaction
             ID:</b>http://example.org/a-knowledge-base-id/interaction/319466f5-865e-46b0-a2aa-ddb6dde68bc9</p>
-    <p><b>Knowledge Interaction Type:</b>AskKnowledgeInteraction</p>
+    <p><b>Knowledge Interaction Type:</b>AskKnowledgeInteraction</p> -->
+
+
 </div>
 
-<button *ngIf="isConnected" class="test-button" (click)="testAsk()" mat-raised-button style="margin-left:20px" color="accent">Start Polling</button>
+<div *ngIf="connectorCreated">
+    <p>A Smart Connectore has been created to communicate with the <b>Knowledge Base</b>: {{knowledgeBaseId}}</p>
+    <p>Please register an Ask KnowledgeInteraction, after defining the Graph Patter</p>
+    <mat-form-field>
+        <mat-label>Graph Pattern</mat-label>
+        <textarea matInput [(ngModel)]="graphPattern"></textarea>
+    </mat-form-field>
+    <br>
+    <button (click)="testRegisterInteraction()" mat-raised-button style="margin-left:20px"
+        color="accent">Register Interaction</button>
+</div>
+<div *ngIf="interactionCreated">
+    <p>Now you can send an ASK request with the following Binding set and wait for the answer</p>
+    <mat-form-field>
+        <mat-label>Binding set</mat-label>
+        <textarea matInput [(ngModel)]="bindingSet"></textarea>
+    </mat-form-field>
+    <br>
+    <button (click)="testAsk()" mat-raised-button style="margin-left:20px" color="accent">Send ASK</button>
+</div>
 
-<p *ngIf="testCompleted" class="test-response">test communication works!</p>
+<mat-spinner *ngIf="pendingResponse"></mat-spinner>
+
+<div *ngIf="testCompleted" class="test-response">
+    <p>Service B responded!</p>
+    <mat-form-field>
+        <mat-label>Binding set</mat-label>
+        <textarea matInput [(ngModel)]="askRepose"></textarea>
+    </mat-form-field>
+</div>
 <!-- <app-measurement-list *ngIf="testCompleted" [type]="'temperature'"></app-measurement-list> -->

@@ -32,6 +32,7 @@ import { MeasurementListComponent } from './components/measurement-list/measurem
 import { DeviceDetailsComponent } from './components/device-details/device-details.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { TestCommunicationComponent } from './components/test-communication/test-communication.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -68,7 +69,8 @@ import { TestCommunicationComponent } from './components/test-communication/test
     FormsModule,
     NgIf,
     MatDialogModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

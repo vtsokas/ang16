@@ -20,7 +20,7 @@ export class LayoutService {
       title: title,
       value:value,
       rows: 3,
-      cols: 1
+      cols: (type != CARD_TYPE.TEST_COMMUNICATION) ? 1 : 2
     });
   }
 

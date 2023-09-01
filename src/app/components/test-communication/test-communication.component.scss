@@ -1,9 +1,9 @@
 .connect-button {
-    margin-top: 24px;
+    // margin-top: 24px;
 }
 
 .connection-info {
-    margin-top: 96px;
+    // margin-top: 96px;
 }
 
 .test-button {
@@ -11,5 +11,15 @@
 }
 
 .test-response {
-    margin-top: 96px;
+    // margin-top: 96px;
+}
+
+.mat-mdc-form-field {
+    width: 800px;
+    font-size: large;
+}
+
+.mat-mdc-progress-spinner {
+    width: 40px!important;
+    margin-left: 49%;
 }
