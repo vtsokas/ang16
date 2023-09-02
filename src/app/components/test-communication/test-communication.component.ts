@@ -36,6 +36,8 @@ export class TestCommunicationComponent implements OnInit {
   }
 
   testRegisterInteraction() {
+    this.interactionCreated = false;
+    this.testCompleted = false;
     this.cService.smartConnectorRegisterInteraction(this.graphPattern, (success: any) => {
       if (success) {
         this.interactionCreated = true;
