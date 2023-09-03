@@ -1,11 +1,11 @@
 {
   "/oauth2/*": {
-    "target": "http://localhost:3005",
+    "target": "http://172.18.1.5:3005",
     "secure": false,
     "changeOrigin": true
   },
   "/v2/*": {
-    "target": "http://localhost:1027",
+    "target": "http://172.18.1.10:1027",
     "secure": false,
     "changeOrigin": true
   },
