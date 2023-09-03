@@ -10,12 +10,12 @@
     "changeOrigin": true
   },
   "/servicestore/*": {
-    "target": "http://localhost:9090",
+    "target": "http://172.18.1.7:9090",
     "secure": false,
     "changeOrigin": true
   },
   "/smartconnector/*": {
-    "target": "http://localhost:9090",
+    "target": "http://172.18.1.7:9090",
     "secure": false,
     "changeOrigin": true
   }
